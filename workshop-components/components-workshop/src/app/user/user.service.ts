@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../types/user';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -31,12 +29,22 @@ export class UserService {
     };
 
     localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
+  }
 
+
+  register(): void {
+    this.user = {
+      email: 'fani@gmail.com',
+      firstName: 'Fani'
+    };
+
+    localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
   logout(): void {
     this.user = undefined;
     localStorage.removeItem(this.USER_KEY);
   }
+
 
 }

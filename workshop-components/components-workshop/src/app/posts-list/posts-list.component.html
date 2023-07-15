@@ -1,8 +1,13 @@
 <aside>
     <div *ngIf="isLoading">
-     <app-loader />
+        <app-loader />
     </div>
-    <div class="aside" *ngIf="!isLoading">
+
+    <div *ngIf="!isLoading && thereAreNoPosts">
+        <h3>There are no posts!</h3>
+    </div>
+
+    <div class="aside" *ngIf="!isLoading && !thereAreNoPosts">
         <h2 class="title">
             Recent posts
         </h2>
@@ -14,7 +19,7 @@
                     <p><span>{{post.created_at}}</span></p>
                 </a>
             </div>
-        
+
         </div>
     </div>
 </aside>

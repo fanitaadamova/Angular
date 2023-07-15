@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Theme } from '../types/theme';
 import { UserService } from '../user/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-themes-list',
   templateUrl: './themes-list.component.html',
   styleUrls: ['./themes-list.component.css']
 })
-export class ThemesListComponent implements OnInit {
+export class ThemesListComponent implements OnInit, OnDestroy {
+  subscription!: Subscription;
   themesList: Theme[] = [];
   isLoading: boolean = true;
 
@@ -19,7 +21,7 @@ export class ThemesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getThemes().subscribe({
+    this.subscription = this.apiService.getThemes().subscribe({
       next: (themes) => {
         this.themesList = themes;
         this.isLoading = false;
@@ -31,5 +33,11 @@ export class ThemesListComponent implements OnInit {
     });
   }
 
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
 
 }
