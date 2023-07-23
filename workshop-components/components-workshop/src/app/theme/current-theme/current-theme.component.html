@@ -10,8 +10,9 @@
                 </div>
                 <div class="subscribers">
                     <p>Subscribers: <span>{{theme.subscribers.length}}</span></p>
-                    <!-- <button class="subscribe">Subscribe</button>
-                    <button class="unsubscribe">Unsubscribe</button> -->
+                         <!-- Subscribe  -->
+                     <button  *ngIf="!isSubcribed" class="subscribe" (click)="subscribe()" >Subscribe</button>
+                    <button  *ngIf="isSubcribed" class="unsubscribe" (click)="subscribe()">Unsubscribe</button>
                 </div>
             </div>
         </div>
@@ -29,8 +30,9 @@
                 </div>
             </div>
             <div class="footer">
-                <!-- <i class="fas fa-thumbs-up"></i>
-                <i class="fas fa-thumbs-down"></i> -->
+                   <!-- Like  -->
+                <i *ngIf="!isLiked" class="fas fa-thumbs-up" (click)="like()" ></i>
+                <i *ngIf="isLiked"  class="fas fa-thumbs-down"  (click)="like()"></i>
                 <p><span>{{post.likes.length}}</span> likes</p>
             </div>
         </div>

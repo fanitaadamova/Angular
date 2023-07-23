@@ -1,4 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Theme } from 'src/app/types/theme';
 
 @Component({
@@ -6,12 +7,19 @@ import { Theme } from 'src/app/types/theme';
   templateUrl: './new-theme.component.html',
   styleUrls: ['./new-theme.component.css']
 })
-export class NewThemeComponent implements OnChanges {
+export class NewThemeComponent  {
   theme: Theme | undefined
   constructor() { }
-//My desicion
-  ngOnChanges(changes: SimpleChanges): void {
+
+
+  newThemeHandler(form: NgForm): void{
+    if(form.invalid){
+      return
+    }
+
+    console.log(form.value);
     
+
   }
 
 }

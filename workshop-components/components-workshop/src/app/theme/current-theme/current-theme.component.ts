@@ -10,6 +10,10 @@ import { UserService } from 'src/app/user/user.service';
   styleUrls: ['./current-theme.component.css']
 })
 export class CurrentThemeComponent implements OnInit {
+  isLiked = false;
+  isSubcribed = false;
+
+
   theme: Theme | undefined;
 
   constructor(
@@ -20,6 +24,29 @@ export class CurrentThemeComponent implements OnInit {
   get isLogged(): boolean {
     return this.userService.isLogged;
   }
+
+  like(): void {
+   
+
+    // TODO: get number of likes
+    if(this.isLiked){
+      // TODO:  - 1 like   
+          
+    }else{      
+      // TODO: + 1 like 
+      console.log("I like this");
+    }
+    
+    // TODO: update number of likes
+
+
+    this.isLiked = !this.isLiked;
+  }
+
+  subscribe(): void {
+    this.isSubcribed = !this.isSubcribed;
+  }
+
 
   ngOnInit(): void {
     this.fetchTheme();

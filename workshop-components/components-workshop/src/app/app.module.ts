@@ -10,10 +10,12 @@ import { ThemesListComponent } from './themes-list/themes-list.component';
 import { HttpClientModule } from '@angular/common/http'
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { UserModule } from './user/user.module';
+
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
@@ -23,18 +25,19 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ThemesListComponent,
     HomeComponent,
     WelcomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AuthenticateComponent
   ],
   imports: [
     BrowserModule,
     CoreModule,
     HttpClientModule,
     SharedModule,
-    UserModule,
+   
     ThemeModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
